@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-navbar color="header">
+      <!-- <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button> -->
+      <ion-title>wTel</ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="logout()">
+                                <ion-icon name="md-log-out"></ion-icon>
+                              </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+  <ion-segment [(ngModel)]="segment" color="header" mode="ios">
+    <ion-segment-button value="study">
+      <ion-label>Study Material</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="skill">
+        <ion-label>Skills</ion-label>
+      </ion-segment-button>
+    <ion-segment-button value="service">
+      <ion-label>Important</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-row>
+    <ion-col col-6>
+      <p *ngIf="admin">Admin Name: {{admin.user_name}}</p>
+    </ion-col>
+    <ion-col col-6>
+        <p *ngIf="admin">Admin Mobile: {{admin.phone}}</p>
+      </ion-col>
+  </ion-row>
+  
+  <div *ngIf="segment === 'study'">
+      <ion-list >
+          <ion-item *ngFor="let item of subject" (click)="itemclick(item,'1')">
+            <ion-label>{{item.subjectname}}</ion-label>
+          </ion-item>
+        </ion-list>
+  </div>
+  <div *ngIf="segment === 'skill'" >
+      <ion-list >
+          <ion-item *ngFor="let item of skills" (click)="itemclick(item,'2')">
+            <ion-label>{{item.subjectname}}</ion-label>
+          </ion-item>
+        </ion-list>
+  </div>
+  <div *ngIf="segment === 'service'" >
+    <ion-list>
+      <ion-item *ngFor="let item of services">
+        <ion-label>{{item}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

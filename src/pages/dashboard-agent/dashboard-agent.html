@@ -1,0 +1,187 @@
+<ion-header>
+    <ion-navbar color="header">
+      <!-- <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button> -->
+      <ion-title>wTel</ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="logout()">
+                                <ion-icon name="md-log-out"></ion-icon>
+                              </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+    <ion-segment [(ngModel)]="segment" color="header" mode="ios" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="add">
+          <ion-label>Add Student</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="list">
+          <ion-label>Student List</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <div *ngIf="segment === 'add'" class="parent">
+          <p *ngIf="user">Welcome to {{user.user_name}}</p>
+        <form [formGroup]="register" (ngSubmit)="add()">
+              <ion-item>
+                  <ion-label floating>First Name</ion-label>
+                  <ion-input type="text" formControlName="firstname"></ion-input>
+              </ion-item>
+              <div padding-horizontal>
+                  <div class="alert" *ngIf="!register.controls['firstname'].valid && register.controls['firstname'].touched">Please Enter first name</div>
+              </div>
+              <ion-item>
+                  <ion-label floating>Last Name</ion-label>
+                  <ion-input type="text" formControlName="lastname"></ion-input>
+              </ion-item>
+              <div padding-horizontal>
+                  <div class="alert" *ngIf="!register.controls['lastname'].valid && register.controls['lastname'].touched">Please Enter last name</div>
+              </div>
+              <ion-item>
+                  <ion-label floating>School Name</ion-label>
+                  <ion-input type="text" formControlName="schoolname"></ion-input>
+              </ion-item>
+              <div padding-horizontal>
+                  <div class="alert" *ngIf="!register.controls['schoolname'].valid && register.controls['schoolname'].touched">Please Enter school name</div>
+              </div>
+              <ion-item>
+                  <ion-label floating>Email</ion-label>
+                  <ion-input type="email" formControlName="email"></ion-input>
+              </ion-item>
+              <div padding-horizontal>
+                  <div class="alert" *ngIf="!register.controls['email'].valid && register.controls['email'].touched">Please Enter email</div>
+              </div>
+              <ion-item>
+                  <ion-label floating>City</ion-label>
+                  <ion-input type="text" formControlName="city"></ion-input>
+              </ion-item>
+              <div padding-horizontal>
+                  <div class="alert" *ngIf="!register.controls['city'].valid && register.controls['city'].touched">Please Enter city</div>
+              </div>
+              <ion-item>
+                  <ion-label floating>Address</ion-label>
+                  <ion-input type="text" formControlName="address"></ion-input>
+              </ion-item>
+              <div padding-horizontal>
+                  <div class="alert" *ngIf="!register.controls['address'].valid && register.controls['address'].touched">Please Enter address</div>
+              </div>
+              <ion-item>
+                  <ion-label floating>IMEI</ion-label>
+                  <ion-input type="text" formControlName="imei"></ion-input>
+              </ion-item>
+              <div padding-horizontal>
+                  <div class="alert" *ngIf="!register.controls['imei'].valid && register.controls['imei'].touched">Please Enter IMEI</div>
+              </div>
+              <ion-item>
+                  <ion-label floating>Mobile</ion-label>
+                  <ion-input type="number" formControlName="mobile"></ion-input>
+              </ion-item>
+              <div padding-horizontal>
+                  <div class="alert" *ngIf="!register.controls['mobile'].valid && register.controls['mobile'].touched">Please Enter mobile</div>
+              </div>
+              <ion-item>
+                  <ion-label floating>Password</ion-label>
+                  <ion-input type="password" formControlName="password"></ion-input>
+              </ion-item>
+              <div padding-horizontal>
+                  <div class="alert" *ngIf="!register.controls['password'].valid && register.controls['password'].touched">Please Enter password</div>
+              </div>
+              <ion-item>
+                  <ion-label floating>Confirm Password</ion-label>
+                  <ion-input type="password" formControlName="confirmpassword"></ion-input>
+              </ion-item>
+              <div padding-horizontal>
+                  <div class="alert" *ngIf="!register.controls['confirmpassword'].valid && register.controls['confirmpassword'].touched">Please Enter confirm password</div>
+              </div>
+          <ion-list radio-group no-lines (ionChange)="selectedValueGender($event)" >
+              <h6 class="parent">Select Gender</h6>
+              <ion-row>
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-radio item-left value="1"></ion-radio>
+                    <ion-label>Male</ion-label>
+                  </ion-item>
+                </ion-col>
+                <ion-col col-6>
+                  <ion-item>
+                    <ion-radio item-left value="2"></ion-radio>
+                    <ion-label>Female</ion-label>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-list>
+            <ion-item>
+              <ion-label>Select Board</ion-label>
+              <ion-select interface="popover" (ionChange)='onChangeBoard($event)' [(ngModel)]="board" [ngModelOptions]="{standalone: true}">
+                <ion-option *ngFor="let board of boards" [value]="board">{{board.boardname}}</ion-option>
+              </ion-select>
+            </ion-item>
+        <ion-item>
+          <ion-label>Select Medium</ion-label>
+          <ion-select interface="popover" (ionChange)='onChangeMedium($event)' [(ngModel)]="medium" [ngModelOptions]="{standalone: true}">
+            <ion-option *ngFor="let medium of mediums" [value]="medium">{{medium.medium_name}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Select Class</ion-label>
+          <ion-select interface="popover" [(ngModel)]="class" [ngModelOptions]="{standalone: true}">
+            <ion-option *ngFor="let class of Classes" [value]="class">{{class.classname}}</ion-option>
+          </ion-select>
+        </ion-item>
+        <div class="button_div">
+          <button ion-button block [disabled]="!register.valid">
+            Add
+          </button>
+        </div>
+      </form>
+      </div>
+      <div *ngIf="segment === 'list'" class="parent">
+          <ion-segment [(ngModel)]="studentlist" color="header" mode="ios"  (ionChange)="segmentChangedlist($event)">
+              <ion-segment-button value="approved">
+                <ion-label>Approved List</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="pending">
+                <ion-label>Pending List</ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="rejected">
+                  <ion-label>Rejected List</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+            <p *ngIf="user">Welcome to {{user.user_name}}</p>
+            <div *ngIf="studentlist === 'approved'" class="parent">
+                <ion-list>
+                    <ion-item *ngFor="let act of active">
+                      <ion-label>
+                        <p>{{act.first_name}} {{act.last_name}}</p>
+                        <p>School: {{act.school}}</p>
+                        <p>Phone: {{act.phone}}</p>
+                      </ion-label>
+                    </ion-item>
+                  </ion-list>
+            </div>
+            <div *ngIf="studentlist === 'pending'" class="parent">
+                <ion-list>
+                    <ion-item *ngFor="let act of pending">
+                        <ion-label>
+                          <p>{{act.first_name}} {{act.last_name}}</p>
+                          <p>School: {{act.school}}</p>
+                          <p>Phone: {{act.phone}}</p>
+                        </ion-label>
+                      </ion-item>
+                  </ion-list>
+            </div>
+            <div *ngIf="studentlist === 'rejected'" class="parent">
+                <ion-list>
+                    <ion-item *ngFor="let act of reject">
+                        <ion-label>
+                          <p>{{act.first_name}} {{act.last_name}}</p>
+                          <p>School: {{act.school}}</p>
+                          <p>Phone: {{act.phone}}</p>
+                        </ion-label>
+                      </ion-item>
+                  </ion-list>
+            </div>
+      </div>
+</ion-content>

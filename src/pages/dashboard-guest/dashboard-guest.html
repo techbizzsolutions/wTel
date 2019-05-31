@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar color="header">
+      <!-- <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button> -->
+      <ion-title>wTel</ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only (click)="logout()">
+                                <ion-icon name="md-log-out"></ion-icon>
+                              </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+    <p *ngFor="let item of guest" [innerHtml]="item.post_contents"></p>
+</ion-content>

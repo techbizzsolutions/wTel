@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar color="header">
+      <ion-title>wTel</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h5>Login</h5>
+  <form [formGroup]="register" (ngSubmit)="logForm()">
+      <ion-item>
+          <ion-label floating>Mobile</ion-label>
+          <ion-input type="number" formControlName="Username"></ion-input>
+      </ion-item>
+      <div padding-horizontal>
+          <div class="alert" *ngIf="!register.controls['Username'].valid && register.controls['Username'].touched">Please Enter a User name</div>
+      </div>
+      <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="Password" formControlName="Password"></ion-input>
+      </ion-item>
+      <div padding-horizontal>
+          <div class="alert" *ngIf="!register.controls['Password'].valid && register.controls['Password'].touched">Please Enter Password</div>
+      </div>
+      <!-- Float the icon right -->
+      <div class="button_div">
+          <button ion-button [disabled]="!register.valid" block icon-right>
+          Login
+      <ion-icon name="log-in"></ion-icon>
+    </button>
+      </div>
+  </form>
+</ion-content>

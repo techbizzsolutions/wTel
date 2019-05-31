@@ -1,0 +1,17 @@
+<ion-header>
+
+    <ion-navbar color="header">
+        <ion-title>wTel</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+    <h5>List of Chapters</h5>
+    <ion-list>
+        <ion-item *ngFor="let item of chapters" (click)="itemclick(item)">
+          <ion-label>{{item.topic_name}}</ion-label>
+        </ion-item>
+      </ion-list>
+</ion-content>
