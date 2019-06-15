@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.technotwit.wtel" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>wTel</name>
+<widget id="com.technotwit.dgtel" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>DGtel</name>
     <description>Way to easy learning </description>
     <author email="gst@technotwit.co.in" href="https://technotwitsolutions.com/">Techno  Team</author>
     <content src="index.html" />

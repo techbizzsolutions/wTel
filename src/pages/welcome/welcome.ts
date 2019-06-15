@@ -24,7 +24,7 @@ export class WelcomePage {
          this.navCtrl.push(LoginPage,{type:type});
          break;
       case '2':
-         this.navCtrl.setRoot('DashboardGuestPage');
+         this.navCtrl.push('DashboardGuestPage');
          break;
      
        default:
